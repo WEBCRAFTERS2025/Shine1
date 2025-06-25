@@ -8,8 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="admin-styles.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <link rel="icon" href="../sampp.png">
-
 </head>
 <body>
     <!-- Sidebar -->
@@ -71,10 +69,14 @@
                 </button>
                 <div class="navbar-nav ms-auto">
                     <div class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-user-circle"></i> Admin
                         </a>
-                     
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -112,12 +114,12 @@
                 </div>-->
                 <div class="col-lg-3">
                     <select class="form-select" id="classFilterQuiz">
-                        <option value="">All Classes</option>
-                        <option value="10A">BCA</option>
-                        <option value="10B">BSC(CS)</option>
-                        <option value="11A">BSC(MATHS)</option>
-                        <option value="11B">MCA</option>
-                        <option value="12A">MSC(CS)</option>
+                           <option value="">All Classes</option>
+                        <option value="BCA">BCA</option>
+                        <option value="BSc(CS)">BSc(CS)</option>
+                        <option value="BSc(Mathematics)">BSc(Mathematics)</option>
+                        <option value="MCA">MCA</option>
+                        <option value="MSc(CS)">MSc(CS)</option>
                     </select>
                 </div>
                 <div class="col-lg-3">

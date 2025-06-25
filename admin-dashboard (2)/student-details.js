@@ -8,7 +8,7 @@ const sampleStudents = [
   {
     id: "STU001",
     name: "Gokul G",
-    class: "10A",
+    class: "BCA",
     email: "gokul.g@school.edu",
     phone: "+91 9876543210",
     dob: "2008-05-15",
@@ -23,7 +23,7 @@ const sampleStudents = [
   {
     id: "STU002",
     name: "Rogini P",
-    class: "10A",
+    class: "BCA",
     email: "rogini.p@school.edu",
     phone: "+91 9876543212",
     dob: "2008-08-22",
@@ -38,7 +38,7 @@ const sampleStudents = [
   {
     id: "STU003",
     name: "Saravana R",
-    class: "10B",
+    class: "BCA",
     email: "saravana.r@school.edu",
     phone: "+91 9876543214",
     dob: "2008-03-10",
@@ -53,7 +53,7 @@ const sampleStudents = [
   {
     id: "STU004",
     name: "Hari B",
-    class: "11A",
+    class: "BSc(CS)",
     email: "hari.b@school.edu",
     phone: "+91 9876543216",
     dob: "2007-11-05",
@@ -68,7 +68,7 @@ const sampleStudents = [
   {
     id: "STU005",
     name: "Varsha S",
-    class: "11A",
+    class: "MSc(CS)",
     email: "varsha.s@school.edu",
     phone: "+91 9876543218",
     dob: "2007-07-18",
@@ -83,7 +83,7 @@ const sampleStudents = [
   {
     id: "STU006",
     name: "Arsha P",
-    class: "11B",
+    class: "MCA",
     email: "arsha.p@school.edu",
     phone: "+91 9876543220",
     dob: "2007-12-30",
@@ -98,7 +98,7 @@ const sampleStudents = [
   {
     id: "STU007",
     name: "Vaishavi F",
-    class: "12A",
+    class: "MCA",
     email: "vaishavi.f@school.edu",
     phone: "+91 9876543222",
     dob: "2006-09-12",
@@ -113,7 +113,7 @@ const sampleStudents = [
   {
     id: "STU008",
     name: "Sharmila S",
-    class: "12A",
+    class: "MCA",
     email: "sharmila.s@school.edu",
     phone: "+91 9876543224",
     dob: "2006-04-25",
@@ -128,7 +128,7 @@ const sampleStudents = [
   {
     id: "STU009",
     name: "Prasanth VK",
-    class: "12B",
+    class: "BCA",
     email: "prasanth.vk@school.edu",
     phone: "+91 9876543226",
     dob: "2006-01-08",

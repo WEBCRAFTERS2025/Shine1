@@ -1,20 +1,21 @@
-import { Chart } from "@/components/ui/chart"
+/*import { Chart } from "@/components/ui/chart"
 // Quiz Results JavaScript
 
 let quizResults = []
 
 // Sample students with the names you specified
 const students = [
-  { id: "STU001", name: "Gokul G", class: "10A" },
-  { id: "STU002", name: "Rogini P", class: "10A" },
-  { id: "STU003", name: "Saravana R", class: "10B" },
-  { id: "STU004", name: "Hari B", class: "11A" },
-  { id: "STU005", name: "Varsha S", class: "11A" },
-  { id: "STU006", name: "Arsha P", class: "11B" },
-  { id: "STU007", name: "Vaishavi F", class: "12A" },
-  { id: "STU008", name: "Sharmila S", class: "12A" },
-  { id: "STU009", name: "Prasanth VK", class: "12B" },
+   { id: "STU001", name: "Gokul G", class: "BCA" },
+  { id: "STU002", name: "Rogini P", class: "BCA" },
+  { id: "STU003", name: "Saravana R", class: "BCA" },
+  { id: "STU004", name: "Hari B", class: "BSc(CS)" },
+  { id: "STU005", name: "Varsha S", class: "MSc(CS)" },
+  { id: "STU006", name: "Arsha P", class: "MCA" },
+  { id: "STU007", name: "Vaishavi F", class: "MCA" },
+  { id: "STU008", name: "Sharmila S", class: "MCA" },
+  { id: "STU009", name: "Prasanth VK", class: "BCA" },
 ]
+
 
 // Sample quiz results
 const sampleQuizResults = [
@@ -23,9 +24,8 @@ const sampleQuizResults = [
     studentId: "STU001",
     studentName: "Gokul G",
     quizId: "QUIZ001",
-    quizTitle: "Mathematics Quiz 1",
-    subject: "Mathematics",
-    class: "10A",
+    quizTitle: "Numerical Ability",
+    class: "BCA",
     dateTaken: "2024-01-20T10:30:00",
     score: 85,
     totalMarks: 100,
@@ -39,9 +39,8 @@ const sampleQuizResults = [
     studentId: "STU002",
     studentName: "Rogini P",
     quizId: "QUIZ001",
-    quizTitle: "Mathematics Quiz 1",
-    subject: "Mathematics",
-    class: "10A",
+    quizTitle: "Numerical Ability",
+    class: "BCA",
     dateTaken: "2024-01-20T10:30:00",
     score: 92,
     totalMarks: 100,
@@ -55,9 +54,8 @@ const sampleQuizResults = [
     studentId: "STU003",
     studentName: "Saravana R",
     quizId: "QUIZ001",
-    quizTitle: "Mathematics Quiz 1",
-    subject: "Mathematics",
-    class: "10B",
+    quizTitle: "Numerical Ability",
+    class: "BCA",
     dateTaken: "2024-01-20T11:00:00",
     score: 78,
     totalMarks: 100,
@@ -68,12 +66,11 @@ const sampleQuizResults = [
   },
   {
     id: "QR004",
-    studentId: "STU004",
+    studentId: "STU002",
     studentName: "Hari B",
     quizId: "QUIZ002",
-    quizTitle: "Physics Quiz 1",
-    subject: "Physics",
-    class: "11A",
+    quizTitle: "Logical Reasoning",
+    class: "BSC(CS)",
     dateTaken: "2024-01-21T14:00:00",
     score: 88,
     totalMarks: 100,
@@ -87,9 +84,8 @@ const sampleQuizResults = [
     studentId: "STU005",
     studentName: "Varsha S",
     quizId: "QUIZ002",
-    quizTitle: "Physics Quiz 1",
-    subject: "Physics",
-    class: "11A",
+    quizTitle: "Logical Reasoning",
+    class: "MSC(CS)",
     dateTaken: "2024-01-21T14:00:00",
     score: 95,
     totalMarks: 100,
@@ -103,9 +99,8 @@ const sampleQuizResults = [
     studentId: "STU006",
     studentName: "Arsha P",
     quizId: "QUIZ002",
-    quizTitle: "Physics Quiz 1",
-    subject: "Physics",
-    class: "11B",
+    quizTitle: "Logical Reasoning",
+    class: "MCA",
     dateTaken: "2024-01-21T15:00:00",
     score: 82,
     totalMarks: 100,
@@ -119,9 +114,8 @@ const sampleQuizResults = [
     studentId: "STU007",
     studentName: "Vaishavi F",
     quizId: "QUIZ003",
-    quizTitle: "Chemistry Quiz 1",
-    subject: "Chemistry",
-    class: "12A",
+    quizTitle: "Programming",
+    class: "MCA",
     dateTaken: "2024-01-22T09:30:00",
     score: 98,
     totalMarks: 100,
@@ -135,9 +129,8 @@ const sampleQuizResults = [
     studentId: "STU008",
     studentName: "Sharmila S",
     quizId: "QUIZ003",
-    quizTitle: "Chemistry Quiz 1",
-    subject: "Chemistry",
-    class: "12A",
+    quizTitle: "Programming",
+    class: "MCA",
     dateTaken: "2024-01-22T09:30:00",
     score: 89,
     totalMarks: 100,
@@ -150,10 +143,9 @@ const sampleQuizResults = [
     id: "QR009",
     studentId: "STU009",
     studentName: "Prasanth VK",
-    quizId: "QUIZ005",
-    quizTitle: "English Quiz 1",
-    subject: "English",
-    class: "12B",
+    quizId: "QUIZ003",
+    quizTitle: "Programming",
+    class: "BCA",
     dateTaken: "2024-01-23T11:00:00",
     score: 76,
     totalMarks: 100,
@@ -511,4 +503,209 @@ function logout() {
     alert("Logged out successfully!")
     window.location.href = "admin-login.html"
   }
+}*/
+// Sample data
+const sampleQuizResults = [
+  {
+    id: "QR001",
+    studentId: "STU001",
+    studentName: "Gokul G",
+    quizId: "QUIZ001",
+    quizTitle: "Numerical Ability",
+    subject: "Mathematics",
+    class: "BCA",
+    dateTaken: "2024-01-20T10:30:00",
+    score: 85,
+    totalMarks: 100,
+    timeTaken: "15:30",
+    grade: "B+",
+    correctAnswers: 17,
+    totalQuestions: 20,
+  },
+  {
+    id: "QR002",
+    studentId: "STU002",
+    studentName: "Rogini P",
+    quizId: "QUIZ001",
+    quizTitle: "Numerical Ability",
+    subject: "Mathematics",
+    class: "BCA",
+    dateTaken: "2024-01-20T10:30:00",
+    score: 92,
+    totalMarks: 100,
+    timeTaken: "12:45",
+    grade: "A-",
+    correctAnswers: 18,
+    totalQuestions: 20,
+  },
+  {
+    id: "QR003",
+    studentId: "STU003",
+    studentName: "Saravana R",
+    quizId: "QUIZ001",
+    quizTitle: "Numerical Ability",
+    subject: "Mathematics",
+    class: "BCA",
+    dateTaken: "2024-01-20T11:00:00",
+    score: 78,
+    totalMarks: 100,
+    timeTaken: "18:20",
+    grade: "B",
+    correctAnswers: 16,
+    totalQuestions: 20,
+  },
+  {
+    id: "QR004",
+    studentId: "STU004",
+    studentName: "Hari B",
+    quizId: "QUIZ002",
+    quizTitle: "Logical Reasoning",
+    subject: "Reasoning",
+    class: "BSc(CS)",
+    dateTaken: "2024-01-21T14:00:00",
+    score: 88,
+    totalMarks: 100,
+    timeTaken: "20:15",
+    grade: "B+",
+    correctAnswers: 22,
+    totalQuestions: 25,
+  },
+  {
+    id: "QR005",
+    studentId: "STU005",
+    studentName: "Varsha S",
+    quizId: "QUIZ002",
+    quizTitle: "Logical Reasoning",
+    subject: "Reasoning",
+    class: "MSc(CS)",
+    dateTaken: "2024-01-21T14:00:00",
+    score: 95,
+    totalMarks: 100,
+    timeTaken: "16:30",
+    grade: "A",
+    correctAnswers: 24,
+    totalQuestions: 25,
+  },
+  {
+    id: "QR006",
+    studentId: "STU006",
+    studentName: "Arsha P",
+    quizId: "QUIZ002",
+    quizTitle: "Logical Reasoning",
+    subject: "Reasoning",
+    class: "MCA",
+    dateTaken: "2024-01-21T15:00:00",
+    score: 82,
+    totalMarks: 100,
+    timeTaken: "19:45",
+    grade: "B+",
+    correctAnswers: 21,
+    totalQuestions: 25,
+  },
+  {
+    id: "QR007",
+    studentId: "STU007",
+    studentName: "Vaishavi F",
+    quizId: "QUIZ003",
+    quizTitle: "Programming",
+    subject: "Computer Science",
+    class: "MCA",
+    dateTaken: "2024-01-22T09:30:00",
+    score: 98,
+    totalMarks: 100,
+    timeTaken: "14:20",
+    grade: "A+",
+    correctAnswers: 19,
+    totalQuestions: 20,
+  },
+  {
+    id: "QR008",
+    studentId: "STU008",
+    studentName: "Sharmila S",
+    quizId: "QUIZ003",
+    quizTitle: "Programming",
+    subject: "Computer Science",
+    class: "MCA",
+    dateTaken: "2024-01-22T09:30:00",
+    score: 89,
+    totalMarks: 100,
+    timeTaken: "17:10",
+    grade: "B+",
+    correctAnswers: 18,
+    totalQuestions: 20,
+  },
+  {
+    id: "QR009",
+    studentId: "STU009",
+    studentName: "Prasanth VK",
+    quizId: "QUIZ003",
+    quizTitle: "Programming",
+    subject: "Computer Science",
+    class: "BCA",
+    dateTaken: "2024-01-23T11:00:00",
+    score: 76,
+    totalMarks: 100,
+    timeTaken: "22:30",
+    grade: "B",
+    correctAnswers: 15,
+    totalQuestions: 20,
+  },
+];
+
+// Display quiz results in the table
+function displayQuizResults() {
+  const tbody = document.getElementById("quizResultsTableBody");
+  tbody.innerHTML = sampleQuizResults
+    .map((res) => {
+      return `
+        <tr>
+          <td>${res.studentName}</td>
+          <td>${res.quizTitle}</td>
+          <td>${res.subject}</td>
+          <td>${res.class}</td>
+          <td>${formatDateTime(res.dateTaken)}</td>
+          <td>${res.score}%</td>
+          <td>${res.grade}</td>
+          <td>${res.timeTaken}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" onclick="viewQuizDetails('${res.id}')">
+              View
+            </button>
+          </td>
+        </tr>
+      `;
+    })
+    .join("");
 }
+
+function formatDateTime(dateStr) {
+  const date = new Date(dateStr);
+  return date.toLocaleString("en-IN", {
+    year: "numeric", month: "short", day: "numeric",
+    hour: "2-digit", minute: "2-digit",
+  });
+}
+
+// View quiz details in modal
+function viewQuizDetails(id) {
+  const res = sampleQuizResults.find((r) => r.id === id);
+  if (!res) return;
+
+  const content = document.getElementById("quizDetailsContent");
+  content.innerHTML = `
+    <p><strong>Name:</strong> ${res.studentName}</p>
+    <p><strong>Quiz:</strong> ${res.quizTitle}</p>
+    <p><strong>Subject:</strong> ${res.subject}</p>
+    <p><strong>Score:</strong> ${res.score}% (${res.correctAnswers}/${res.totalQuestions})</p>
+    <p><strong>Grade:</strong> ${res.grade}</p>
+    <p><strong>Time Taken:</strong> ${res.timeTaken}</p>
+    <p><strong>Date:</strong> ${formatDateTime(res.dateTaken)}</p>
+  `;
+
+  const modal = new bootstrap.Modal(document.getElementById("quizDetailsModal"));
+  modal.show();
+}
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", displayQuizResults);
+

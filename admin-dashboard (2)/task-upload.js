@@ -1,6 +1,6 @@
 // Task Upload JavaScript
 
-let tasks = []
+/*let tasks = []
 let taskCounter = 1
 
 // Sample students with the names you specified
@@ -8,8 +8,8 @@ const students = [
   { id: "STU001", name: "Gokul G", class: "BCA" },
   { id: "STU002", name: "Rogini P", class: "BCA" },
   { id: "STU003", name: "Saravana R", class: "BCA" },
-  { id: "STU004", name: "Hari B", class: "BSC(CS)" },
-  { id: "STU005", name: "Varsha S", class: "MSC(CS)" },
+  { id: "STU004", name: "Hari B", class: "BSc(CS)" },
+  { id: "STU005", name: "Varsha S", class: "MSc(CS)" },
   { id: "STU006", name: "Arsha P", class: "MCA" },
   { id: "STU007", name: "Vaishavi F", class: "MCA" },
   { id: "STU008", name: "Sharmila S", class: "MCA" },
@@ -23,7 +23,7 @@ const sampleTasks = [
     title: "Problem Solving Techniques",
     type: "Assignment",
     subject: "Computer",
-    class: "10A",
+    class: "BCA",
     description: "Learn Steps to Solve a Problem",
     dueDate: "2024-01-25T23:59",
     maxMarks: 100,
@@ -37,7 +37,7 @@ const sampleTasks = [
     title: "Searching Algorithem",
     type: "Assignment",
     subject: "Algorithm",
-    class: "11A",
+    class: "BSc(CS)",
     description: "Learn Linear and Binary Search",
     dueDate: "2024-01-30T23:59",
     maxMarks: 150,
@@ -289,4 +289,146 @@ function logout() {
     alert("Logged out successfully!")
     window.location.href = "admin-login.html"
   }
+}*/
+
+// Task Upload JavaScript
+
+let tasks = []
+let taskCounter = 1
+
+const students = [
+  { id: "STU001", name: "Gokul G", class: "BCA" },
+  { id: "STU002", name: "Rogini P", class: "BCA" },
+  { id: "STU003", name: "Saravana R", class: "BCA" },
+  { id: "STU004", name: "Hari B", class: "BSc(CS)" },
+  { id: "STU005", name: "Varsha S", class: "MSc(CS)" },
+  { id: "STU006", name: "Arsha P", class: "MCA" },
+]
+
+document.addEventListener("DOMContentLoaded", () => {
+  initializeTaskUpload()
+  setupEventListeners()
+})
+
+function initializeTaskUpload() {
+  tasks = []
+  taskCounter = 1
+  displayTasks()
+  updateTaskStats()
 }
+
+function setupEventListeners() {
+  document.getElementById("taskForm").addEventListener("submit", (e) => {
+    e.preventDefault()
+    createTask()
+  })
+}
+
+function createTask() {
+  const title = document.getElementById("taskTitle").value
+  const type = document.getElementById("taskType").value
+  const taskClass = document.getElementById("taskClass").value
+  const dueDate = document.getElementById("taskDueDate").value
+  const description = document.getElementById("taskDescription").value
+  const maxMarks = document.getElementById("taskMaxMarks").value
+  const priority = document.getElementById("taskPriority").value
+  const files = document.getElementById("taskFiles").files
+
+  if (!title || !type || !taskClass || !dueDate || !description || !maxMarks) {
+    showAlert("Please fill in all required fields!", "danger")
+    return
+  }
+
+  const newTask = {
+    id: `TASK${String(taskCounter).padStart(3, "0")}`,
+    title,
+    type,
+    class: taskClass,
+    description,
+    dueDate,
+    maxMarks: Number.parseInt(maxMarks),
+    priority,
+    status: "Active",
+    submissions: 0,
+    createdDate: new Date().toISOString().split("T")[0],
+    files: Array.from(files).map(file => file.name)
+  }
+
+  tasks.push(newTask)
+  taskCounter++
+
+  displayTasks()
+  updateTaskStats()
+  document.getElementById("taskForm").reset()
+  showAlert("Task created successfully!", "success")
+}
+
+function displayTasks() {
+  const tableBody = document.getElementById("tasksTableBody")
+  tableBody.innerHTML = tasks.length === 0
+    ? `<tr><td colspan="8" class="text-center">No tasks found.</td></tr>`
+    : tasks.map(task => `
+      <tr>
+        <td>${task.id}</td>
+        <td>${task.title}</td>
+        <td><span class="badge bg-primary">${task.class}</span></td>
+        <td>${task.type}</td>
+        <td>${formatDateTime(task.dueDate)}</td>
+        <td><span class="badge bg-${getStatusColor(task.status)}">${task.status}</span></td>
+        <td><span class="badge bg-secondary">${task.submissions}</span> / ${getClassStudentCount(task.class)}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" onclick="deleteTask('${task.id}')"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>`).join("")
+}
+
+function updateTaskStats() {
+  const activeTasks = tasks.filter(t => t.status === "Active").length
+  const totalSubmissions = tasks.reduce((sum, t) => sum + t.submissions, 0)
+  const completedTasks = tasks.filter(t => t.status === "Completed").length
+  const overdueTasks = tasks.filter(t => new Date(t.dueDate) < new Date() && t.status === "Active").length
+
+  document.getElementById("activeTasks").textContent = activeTasks
+  document.getElementById("pendingSubmissions").textContent = totalSubmissions
+  document.getElementById("completedTasks").textContent = completedTasks
+  document.getElementById("overdueTasks").textContent = overdueTasks
+}
+
+function getClassStudentCount(className) {
+  return students.filter(s => s.class === className).length
+}
+
+function deleteTask(taskId) {
+  if (confirm("Are you sure you want to delete this task?")) {
+    tasks = tasks.filter(t => t.id !== taskId)
+    displayTasks()
+    updateTaskStats()
+    showAlert("Task deleted!", "success")
+  }
+}
+
+function formatDateTime(dateString) {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })
+}
+
+function getStatusColor(status) {
+  return status === "Active" ? "success" : status === "Completed" ? "primary" : "danger"
+}
+
+function showAlert(message, type = "info") {
+  const alertDiv = document.createElement("div")
+  alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`
+  alertDiv.style.cssText = "top: 20px; right: 20px; z-index: 9999; min-width: 300px;"
+  alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`
+  document.body.appendChild(alertDiv)
+  setTimeout(() => alertDiv.remove(), 3000)
+}
+
+function logout() {
+  if (confirm("Are you sure you want to logout?")) {
+    alert("Logged out successfully!")
+    window.location.href = "admin-login.html"
+  }
+}
+

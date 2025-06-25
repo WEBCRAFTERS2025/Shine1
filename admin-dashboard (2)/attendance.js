@@ -5,15 +5,15 @@ const currentDate = new Date().toISOString().split("T")[0]
 
 // Sample students with the names you specified
 const students = [
-  { id: "STU001", name: "Gokul G", class: "10A" },
-  { id: "STU002", name: "Rogini P", class: "10A" },
-  { id: "STU003", name: "Saravana R", class: "10B" },
-  { id: "STU004", name: "Hari B", class: "11A" },
-  { id: "STU005", name: "Varsha S", class: "11A" },
-  { id: "STU006", name: "Arsha P", class: "11B" },
-  { id: "STU007", name: "Vaishavi F", class: "12A" },
-  { id: "STU008", name: "Sharmila S", class: "12A" },
-  { id: "STU009", name: "Prasanth VK", class: "12B" },
+  { id: "STU001", name: "Gokul G", class: "BCA" },
+  { id: "STU002", name: "Rogini P", class: "BCA" },
+  { id: "STU003", name: "Saravana R", class: "BCA" },
+  { id: "STU004", name: "Hari B", class: "BSc(CS)" },
+  { id: "STU005", name: "Varsha S", class: "BCA" },
+  { id: "STU006", name: "Arsha P", class: "MCA" },
+  { id: "STU007", name: "Vaishavi F", class: "MCA" },
+  { id: "STU008", name: "Sharmila S", class: "MCA" },
+  { id: "STU009", name: "Prasanth VK", class: "BCA" },
 ]
 
 document.addEventListener("DOMContentLoaded", () => {

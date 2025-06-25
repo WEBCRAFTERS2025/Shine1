@@ -1,5 +1,5 @@
 // Task Submitted JavaScript
-
+/*
 let submissions = []
 
 // Sample students with the names you specified
@@ -7,8 +7,8 @@ const students = [
   { id: "STU001", name: "Gokul G", class: "BCA" },
   { id: "STU002", name: "Rogini P", class: "BCA" },
   { id: "STU003", name: "Saravana R", class: "BCA" },
-  { id: "STU004", name: "Hari B", class: "BSC(CS)" },
-  { id: "STU005", name: "Varsha S", class: "MSC(CS)" },
+  { id: "STU004", name: "Hari B", class: "BSc(CS)" },
+  { id: "STU005", name: "Varsha S", class: "MSc(CS)" },
   { id: "STU006", name: "Arsha P", class: "MCA" },
   { id: "STU007", name: "Vaishavi F", class: "MCA" },
   { id: "STU008", name: "Sharmila S", class: "MCA" },
@@ -37,7 +37,7 @@ const sampleSubmissions = [
     studentName: "Rogini P",
     taskId: "TASK001",
     taskTitle: "Searching Techniques",
-    subject: "Algorithem",
+    subject: "Data Structure and Algorithm",
     class: "BCA",
     submittedDate: "2024-01-21T16:45:00",
     status: "Graded",
@@ -52,7 +52,7 @@ const sampleSubmissions = [
     taskId: "TASK002",
     taskTitle: "Searching Techniques",
     subject:  "Algorithem",
-    class: "BSC(CS)",
+    class: "BSc(CS)",
     submittedDate: "2024-01-22T10:15:00",
     status: "Submitted",
     grade: null,
@@ -94,7 +94,7 @@ const sampleSubmissions = [
     taskId: "TASK005",
     taskTitle: "Searching Techniques",
     subject:  "Algorithem",
-    class: "MCA",
+    class: "BCA",
     submittedDate: "2024-01-25T15:45:00",
     status: "Graded",
     grade: 78,
@@ -108,7 +108,7 @@ const sampleSubmissions = [
     taskId: "TASK002",
     taskTitle: "Searching Techniques",
     subject:  "Algorithem",
-    class: "MSC(CS)",
+    class: "MSc(CS)",
     submittedDate: "2024-01-26T13:10:00",
     status: "Late",
     grade: null,
@@ -423,3 +423,172 @@ function logout() {
     window.location.href = "admin-login.html"
   }
 }
+*/
+let submissions = [
+  {
+    id: "SUB001",
+    studentId: "STU001",
+    studentName: "Gokul G",
+    taskId: "TASK001",
+    taskTitle: "Problem Solving Techniques",
+    class: "BCA",
+    submittedDate: "2024-01-20T14:30:00",
+    status: "Graded",
+    grade: "90",
+    feedback: "",
+    files: ["assignment_gokul.pdf"]
+  },
+   {
+    id: "SUB002",
+    studentId: "STU002",
+    studentName: "Soundarya R ",
+    taskId: "TASK001",
+    taskTitle: "Problem Solving Techniques",
+    class: "BCA",
+    submittedDate: "2024-01-20T14:30:00",
+    status: "Graded",
+    grade: "90",
+    feedback: "",
+    files: ["assignment_gokul.pdf"]
+  },
+   {
+    id: "SUB003",
+    studentId: "STU003",
+    studentName: "Varsha",
+    taskId: "TASK001",
+    taskTitle: "Problem Solving Techniques",
+    class: "MCA",
+    submittedDate: "2024-01-20T14:30:00",
+    status: "Submitted",
+    grade: "70",
+    feedback: "",
+    files: ["assignment_gokul.pdf"]
+  },
+   {
+    id: "SUB004",
+    studentId: "STU005",
+    studentName: "Hari G",
+    taskId: "TASK001",
+    taskTitle: "Problem Solving Techniques",
+    class: "BCA",
+    submittedDate: "2024-01-20T14:30:00",
+    status: "Graded",
+    grade: "70",
+    feedback: "",
+    files: ["assignment_gokul.pdf"]
+  }
+]
+
+document.addEventListener("DOMContentLoaded", () => {
+  displaySubmissions()
+  updateSubmissionStats()
+})
+
+function displaySubmissions(data = submissions) {
+  const tbody = document.getElementById("submissionsTableBody")
+  tbody.innerHTML = data.length === 0
+    ? `<tr><td colspan="7" class="text-center">No submissions</td></tr>`
+    : data.map(sub => `
+      <tr>
+        <td>${sub.id}</td>
+        <td>${sub.studentName}</td>
+        <td>${sub.taskTitle}</td>
+        <td>${formatDate(sub.submittedDate)}</td>
+        <td><span class="badge bg-${statusColor(sub.status)}">${sub.status}</span></td>
+        <td>${sub.grade !== null ? `<span class="badge bg-${gradeColor(sub.grade)}">${sub.grade}%</span>` : 'Not graded'}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" onclick="viewSubmission('${sub.id}')"><i class="fas fa-eye"></i></button>
+          <button class="btn btn-sm btn-success" onclick="gradeSubmission('${sub.id}')"><i class="fas fa-star"></i></button>
+        </td>
+      </tr>`).join("")
+}
+
+function viewSubmission(id) {
+  const sub = submissions.find(s => s.id === id)
+  alert(`Files: ${sub.files.join(", ")}`)
+}
+
+function gradeSubmission(id) {
+  const sub = submissions.find(s => s.id === id)
+  if (!sub) return
+
+  document.getElementById("gradingModalContent").innerHTML = `
+    <p><strong>Student:</strong> ${sub.studentName}</p>
+    <p><strong>Task:</strong> ${sub.taskTitle}</p>
+    <p><strong>Submitted:</strong> ${formatDate(sub.submittedDate)}</p>
+    <label for="gradeInput">Grade</label>
+    <input type="number" id="gradeInput" class="form-control mb-2" value="${sub.grade || ""}">
+    <label for="feedbackInput">Feedback</label>
+    <textarea id="feedbackInput" class="form-control">${sub.feedback || ""}</textarea>
+  `
+  window.currentSubmissionId = id
+  new bootstrap.Modal(document.getElementById("gradingModal")).show()
+}
+
+function saveGrade() {
+  const id = window.currentSubmissionId
+  const grade = parseInt(document.getElementById("gradeInput").value)
+  const feedback = document.getElementById("feedbackInput").value
+  const sub = submissions.find(s => s.id === id)
+  if (!sub || isNaN(grade)) return alert("Invalid grade")
+  sub.grade = grade
+  sub.feedback = feedback
+  sub.status = "Graded"
+  displaySubmissions()
+  updateSubmissionStats()
+  bootstrap.Modal.getInstance(document.getElementById("gradingModal")).hide()
+}
+
+function updateSubmissionStats() {
+  document.getElementById("totalSubmissions").textContent = submissions.length
+  document.getElementById("gradedSubmissions").textContent = submissions.filter(s => s.status === "Graded").length
+  document.getElementById("pendingGrading").textContent = submissions.filter(s => s.status === "Submitted").length
+  document.getElementById("lateSubmissions").textContent = submissions.filter(s => s.status === "Late").length
+}
+
+function exportSubmissions() {
+  const wb = XLSX.utils.book_new()
+  const ws = XLSX.utils.json_to_sheet(submissions.map(sub => ({
+    "Submission ID": sub.id,
+    "Student": sub.studentName,
+    "Task": sub.taskTitle,
+    "Submitted": sub.submittedDate,
+    "Status": sub.status,
+    "Grade": sub.grade ?? "Not graded",
+    "Feedback": sub.feedback ?? "None"
+  })))
+  XLSX.utils.book_append_sheet(wb, ws, "Submissions")
+  XLSX.writeFile(wb, "task_submissions.xlsx")
+}
+
+function formatDate(dt) {
+  const d = new Date(dt)
+  return d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })
+}
+
+function statusColor(status) {
+  if (status === "Graded") return "success"
+  if (status === "Submitted") return "warning"
+  if (status === "Late") return "danger"
+  return "secondary"
+}
+
+function gradeColor(grade) {
+  if (grade >= 90) return "success"
+  if (grade >= 75) return "primary"
+  if (grade >= 60) return "warning"
+  return "danger"
+}
+function filterSubmissions() {
+  const selectedStatus = document.getElementById("statusFilter").value;
+  const selectedClass = document.getElementById("classFilterSubmissions").value;
+
+  const filtered = submissions.filter(sub => {
+    const statusMatch = !selectedStatus || sub.status === selectedStatus;
+    const classMatch = !selectedClass || sub.class === selectedClass;
+    return statusMatch && classMatch;
+  });
+
+  displaySubmissions(filtered);
+}
+
